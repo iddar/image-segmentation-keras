@@ -3,7 +3,8 @@ from .data_utils.data_loader import image_segmentation_generator, \
     verify_segmentation_dataset
 import glob
 import six
-from keras.callbacks import Callback
+# from keras.callbacks import Callback
+from tensorflow.keras.callbacks import Callback
 
 
 def find_latest_checkpoint(checkpoints_path, fail_safe=True):
@@ -153,12 +154,14 @@ def train(model,
     ]
 
     if not validate:
-        model.fit_generator(train_gen, steps_per_epoch,
-                            epochs=epochs, callbacks=callbacks)
+        model.fit(train_gen, 
+                  steps_per_epoch=steps_per_epoch,
+                  epochs=epochs,
+                  callbacks=callbacks)
     else:
-        model.fit_generator(train_gen,
-                            steps_per_epoch,
-                            validation_data=val_gen,
-                            validation_steps=val_steps_per_epoch,
-                            epochs=epochs, callbacks=callbacks,
-                            use_multiprocessing=gen_use_multiprocessing)
+        model.fit(train_gen,
+                  steps_per_epoch=steps_per_epoch,
+                  validation_data=val_gen,
+                  validation_steps=val_steps_per_epoch,
+                  epochs=epochs, callbacks=callbacks,
+                  use_multiprocessing=gen_use_multiprocessing)

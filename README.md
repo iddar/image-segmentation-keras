@@ -7,6 +7,14 @@
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 [![Twitter](https://img.shields.io/twitter/url.svg?label=Follow%20%40divamgupta&style=social&url=https%3A%2F%2Ftwitter.com%2Fdivamgupta)](https://twitter.com/divamgupta)
 
+    **IMPORTANT:**
+    This repo fix a `keras Callback error` and update train method for use `fit` over `fit_generator`
+    Tested over tensorflow 2.2.0 and python 3.6
+    This changes works for me, but not its a production version ready.
+
+    For install in developer mode use `pip install -e .`
+
+    For support visit the original repo
 
 
 Implementation of various Deep Image Segmentation models in keras.
